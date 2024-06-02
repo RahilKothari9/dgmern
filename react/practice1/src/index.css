@@ -1,10 +1,9 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  
+  padding: 0;
+  margin: 0;
 }
 
 .square {
@@ -14,12 +13,21 @@ body {
   max-width: 300px;
   border: 3px solid black;
   display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 8px;
 }
 
 .input-field {
   width: 80vw;
   max-width: 300px;
+}
+
+.topbar {
+  display: flex;
+  width: 100vw;
+  margin-bottom: 5vh;
+}
+.topbutton {
+  flex-grow: 1;
+  margin: 0;
+  height: 25px;
 }
