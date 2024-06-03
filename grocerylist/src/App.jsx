@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Header/>
-      <Content tasks={tasks} setTasks={setTasks}/>
+      <Content tasks={tasks} setTasks={setTasks} style={{margin: 'auto'}}/>
     </>
   )
 }
