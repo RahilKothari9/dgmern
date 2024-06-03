@@ -4,6 +4,8 @@ import '../styles/TaskForm.css'
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import { Button } from '@mui/material';
 import axios from 'axios'
+import {collection, addDoc} from "firebase/firestore"
+import {db} from "../firebase"
 
 const TaskForm = ({tasks, setTasks}) => {
     const [newTask, setNewTask] = useState('');
@@ -14,7 +16,8 @@ const TaskForm = ({tasks, setTasks}) => {
         const newList = [...tasks, adderTask];
         setTasks(newList)
         try {
-          const response = await axios.post('http://localhost:3000/tasks', adderTask)
+          // const response = await axios.post('http://localhost:3000/tasks', adderTask)
+            const docRef = await(addDoc(collection(db, 'tasks'), adderTask));
         }
         catch(err)
         {
