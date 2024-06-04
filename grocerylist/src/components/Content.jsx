@@ -40,7 +40,7 @@ const Content = ({tasks, setTasks, loading}) => {
         <h4 className='subtitle'>Tasks</h4>
         <div className='tasks'>
         {
-            (loading)? "tasks are loading...":
+            (loading)? "Tasks are loading...":
             tasks.map((task)=>{
                 return (<Task task={task} key={task.id} handleCheck={handleCheck} handleDelete={handleDelete}/>)
             })
