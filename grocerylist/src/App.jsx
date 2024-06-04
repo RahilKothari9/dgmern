@@ -5,6 +5,7 @@ import Content from './components/Content'
 import axios from 'axios'
 import { collection, getDocs } from "firebase/firestore"; 
 import {db} from './firebase.js'
+import Menu from './components/Menu.jsx'
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -31,6 +32,7 @@ function App() {
   ])
 
   const [loading, setLoading] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(()=>{
     console.log(tasks);
     const fetchTasks = async()=>{
@@ -58,8 +60,9 @@ function App() {
   }, [])
   return (
     <>
-      <Header/>
+      <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>
       <Content tasks={tasks} setTasks={setTasks} style={{margin: 'auto'}} loading={loading}/>
+      {isMenuOpen && <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>}
     </>
   )
 }

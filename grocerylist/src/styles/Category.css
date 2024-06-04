@@ -1,0 +1,44 @@
+.category{
+    background-color: #2f2d36;
+    margin-bottom: 0.5em;
+    font-size: 1.25em;
+    border-radius: 0.5em;
+    min-height: 4vh;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.categoryName {
+    flex-grow: 1;
+    margin: 0;
+    margin-left: 1em;
+}
+
+.categoryform {
+    display: flex;
+    height: 2vh;
+    align-items: center;
+    padding: 1.5%;
+    width: 100%;
+}
+
+.cf-input {
+    flex-grow: 1;
+    background-color: #2f2d36;
+    border: none;
+    color: white!important;
+    font-size: 0.8em;
+    margin-left: 5%;
+}
+
+.cf-button {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    margin-left: 10%;
+}
