@@ -23,12 +23,12 @@ const Categories = ({setIsMenuOpen}) => {
     <div className='modal-content'>
         <div className='st-container'>
             <h4 className='modal-subtitle'>Categories</h4>
-            {!addCategory &&<AddIcon onClick={()=>{setAddCategory(!addCategory)}}/>}
+            {!addCategory && categoryList.length < 9 && <AddIcon onClick={()=>{setAddCategory(!addCategory)}}/>}
             {addCategory &&<CancelIcon onClick={()=>{setAddCategory(!addCategory)}}/>}
         </div>
         
         <div className='categories'>
-            <Category key={0} category={{id: 0, name: "Default"}}/>
+            <Category key={0} category={{id: 0, name: "Default"}} setIsMenuOpen={setIsMenuOpen}/>
             {
                 categoryList.map((category)=>{
                     return (<Category key={category.id} category={category} handleDelete={handleDelete} setIsMenuOpen={setIsMenuOpen}/>)
