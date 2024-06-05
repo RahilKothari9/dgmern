@@ -15,20 +15,22 @@ const TaskForm = ({tasks, setTasks}) => {
         const adderTask= {id, isChecked: false, name:newTask}
         const newList = [...tasks, adderTask];
         setTasks(newList)
+        
         try {
           // const response = await axios.post('http://localhost:3000/tasks', adderTask)
+            setNewTask('')
             const docRef = await(addDoc(collection(db, 'tasks'), adderTask));
         }
         catch(err)
         {
           console.log(err)
         }
+        
     }
   return (
     <form className='taskform' onSubmit={(e)=>{e.preventDefault()}}>
         <input
             placeholder='Add a Task'
-            required
             value={newTask}
             onChange={(e)=>{setNewTask(e.target.value)}}
             className='input'
