@@ -18,7 +18,7 @@ const Category = ({category, handleDelete, setIsMenuOpen}) => {
         />
         <p className='categoryName'>{category.name}</p>
       </div>
-        {category.name !== "Default" && <DeleteIcon onClick={()=>{handleDelete(category.id)}}/>}
+        {category.name !== "Default" && <DeleteIcon onClick={()=>{handleDelete(category.firebaseId)}}/>}
         
     </div>
   )

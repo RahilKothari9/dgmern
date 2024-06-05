@@ -2,10 +2,12 @@ import React, {useState} from 'react'
 import '../styles/Category.css'
 import FolderIcon from '@mui/icons-material/Folder';
 import DoneIcon from '@mui/icons-material/Done';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../firebase';
 
 const CategoryForm = ({categoryList, setCategoryList, setAddCategory}) => {
     const [newCategory, setNewCategory] = useState('');
-    const addCategory = ()=>{
+    const addCategory = async ()=>{
         console.log(categoryList)
         if(newCategory.length === 0)return;
         if(newCategory === "Default")
@@ -18,14 +20,23 @@ const CategoryForm = ({categoryList, setCategoryList, setAddCategory}) => {
         const newList = [...categoryList, adderCategory];
         setCategoryList(newList)
         setAddCategory(false)
-        // try {
-        //   // const response = await axios.post('http://localhost:3000/tasks', adderTask)
-        //     const docRef = await(addDoc(collection(db, 'tasks'), adderTask));
-        // }
-        // catch(err)
-        // {
-        //   console.log(err)
-        // }
+        try {
+          // const response = await axios.post('http://localhost:3000/tasks', adderTask)
+            const docRef = await(addDoc(collection(db, 'categories'), adderCategory));
+            // console.log("Added Successfully")
+            const updatedList = newList.map((item)=>{
+                if(item.id === id)
+                  {
+                    return {...item, firebaseId: docRef.id};
+                  }
+                return item;
+              })
+              setCategoryList(updatedList);
+        }
+        catch(err)
+        {
+          console.log(err)
+        }
     }
     
   return (
@@ -37,7 +48,7 @@ const CategoryForm = ({categoryList, setCategoryList, setAddCategory}) => {
         <input
             placeholder='Add a Category'
             required
-            autofocus
+            autoFocus
             value={newCategory}
             onChange={(e)=>{setNewCategory(e.target.value)}}
             className='cf-input'

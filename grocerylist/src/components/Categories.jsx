@@ -1,24 +1,29 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import '../styles/Categories.css'
 import AddIcon from '@mui/icons-material/Add';
 import Category from './Category';
 import CategoryForm from './CategoryForm';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore"; 
+import {db} from '../firebase.js'
+import { useCategory } from '../contexts/CategoryContext.jsx';
 
 const Categories = ({setIsMenuOpen}) => {
     const [addCategory, setAddCategory] = useState(false);
-    const [categoryList, setCategoryList] = useState([{id:1, name: "Category 1"},{id:2, name: "Category 2"},]);
+    const {categoryList, setCategoryList} = useCategory()
     const handleDelete = async (id)=>{
-        const newCategoryList = categoryList.filter((item)=>{return (item.id !== id)});
+        const newCategoryList = categoryList.filter((item)=>{return (item.firebaseId !== id)});
         setCategoryList(newCategoryList)
-        // try {
-        //     // const response = await axios.delete(`http://localhost:3000/tasks/${id}`);
-        //     deleteDoc(doc(db, "tasks", id))
-        // }
-        // catch (err) {
-        //     console.log(err);
-        // }
+        try {
+            // const response = await axios.delete(`http://localhost:3000/tasks/${id}`);
+            deleteDoc(doc(db, "categories", id))
+        }
+        catch (err) {
+            console.log(err);
+        }
     }
+    
+
     return (
     <div className='modal-content'>
         <div className='st-container'>

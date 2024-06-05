@@ -10,8 +10,8 @@ import { useCategory } from '../contexts/CategoryContext'
 const Content = ({tasks, setTasks, loading}) => {
     
     const handleCheck = async (id)=>{
-        const newTasks = tasks.map((item)=>{return (item.id === id)? {...item, isChecked: !item.isChecked} : item});
-        const myItem = tasks.filter((item)=>{return (item.id === id)});
+        const newTasks = tasks.map((item)=>{return (item.firebaseId === id)? {...item, isChecked: !item.isChecked} : item});
+        const myItem = tasks.filter((item)=>{return (item.firebaseId === id)});
         
         setTasks(newTasks)
         try {
@@ -25,7 +25,7 @@ const Content = ({tasks, setTasks, loading}) => {
         }
     }
     const handleDelete = async (id)=>{
-        const newTasks = tasks.filter((item)=>{return (item.id !== id)});
+        const newTasks = tasks.filter((item)=>{return (item.firebaseId !== id)});
         setTasks(newTasks)
         try {
             // const response = await axios.delete(`http://localhost:3000/tasks/${id}`);
@@ -44,7 +44,7 @@ const Content = ({tasks, setTasks, loading}) => {
         {
             (loading)? "Tasks are loading...":
             tasks.map((task)=>{
-                return (<Task task={task} key={task.id} handleCheck={handleCheck} handleDelete={handleDelete}/>)
+                if(currCategory.id === 0 || currCategory.id === task.categoryId)return (<Task task={task} key={task.id} handleCheck={handleCheck} handleDelete={handleDelete}/>)
             })
         }
         </div>

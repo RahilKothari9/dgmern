@@ -9,11 +9,12 @@ const Task = ({task, handleCheck, handleDelete}) => {
     <div className='task'>
         <Checkbox 
             checked={task.isChecked}
-            onChange={()=>{handleCheck(task.id)}}
+            onChange={()=>{handleCheck(task.firebaseId)}}
             sx={{color: '#724af4!important'}}
         />
+        
         <p className='taskName'>{task.name}</p>
-        <RemoveCircleOutlineIcon onClick={()=>{handleDelete(task.id)}}/>
+        <RemoveCircleOutlineIcon onClick={()=>{handleDelete(task.firebaseId)}}/>
     </div>
   )
 }
