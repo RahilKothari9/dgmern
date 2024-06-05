@@ -5,9 +5,9 @@ import Category from './Category';
 import CategoryForm from './CategoryForm';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const Categories = () => {
+const Categories = ({setIsMenuOpen}) => {
     const [addCategory, setAddCategory] = useState(false);
-    const [categoryList, setCategoryList] = useState([{id:'1', name: "Category 1"},{id:'2', name: "Category 2"},]);
+    const [categoryList, setCategoryList] = useState([{id:1, name: "Category 1"},{id:2, name: "Category 2"},]);
     const handleDelete = async (id)=>{
         const newCategoryList = categoryList.filter((item)=>{return (item.id !== id)});
         setCategoryList(newCategoryList)
@@ -31,7 +31,7 @@ const Categories = () => {
             <Category key={0} category={{id: 0, name: "Default"}}/>
             {
                 categoryList.map((category)=>{
-                    return (<Category key={category.id} category={category} handleDelete={handleDelete}/>)
+                    return (<Category key={category.id} category={category} handleDelete={handleDelete} setIsMenuOpen={setIsMenuOpen}/>)
                 })
             }
             {addCategory && <CategoryForm categoryList={categoryList} setCategoryList={setCategoryList} setAddCategory={setAddCategory}/>}

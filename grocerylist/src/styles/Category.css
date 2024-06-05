@@ -9,6 +9,12 @@
     align-items: center;
 }
 
+.hitbox {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
 .categoryName {
     flex-grow: 1;
     margin: 0;

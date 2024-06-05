@@ -8,28 +8,7 @@ import {db} from './firebase.js'
 import Menu from './components/Menu.jsx'
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      "id": 1,
-      "name": "Task 1",
-      "isChecked": false
-    },
-    {
-      "id": 2,
-      "name": "Task 2",
-      "isChecked": true
-    },
-    {
-      "id": 3,
-      "name": "Task 3",
-      "isChecked": false
-    },
-    {
-      "id": 4,
-      "name": "Task 4",
-      "isChecked": false
-    }
-  ])
+  const [tasks, setTasks] = useState([])
 
   const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);

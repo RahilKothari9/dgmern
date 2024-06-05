@@ -5,7 +5,7 @@ import TaskForm from './TaskForm'
 import axios from 'axios'
 import { db } from '../firebase'
 import { doc, updateDoc,deleteDoc} from "firebase/firestore"; 
-
+import { useCategory } from '../contexts/CategoryContext'
 
 const Content = ({tasks, setTasks, loading}) => {
     
@@ -35,9 +35,11 @@ const Content = ({tasks, setTasks, loading}) => {
             console.log(err);
         }
     }
+
+    const {currCategory} = useCategory();
   return (
     <div className='content'>
-        <h4 className='subtitle'>Tasks</h4>
+        <h4 className='subtitle'>Tasks{currCategory.name !== 'Default' && `/${currCategory.name}`}</h4>
         <div className='tasks'>
         {
             (loading)? "Tasks are loading...":

@@ -24,7 +24,7 @@ const Menu = ({isMenuOpen, setIsMenuOpen}) => {
     >
         <div className='modal'>
             <div className='top'><CloseIcon style={{color: "#e0e1fb", fontSize: "2em", marginTop:"0.1em"}} onClick={()=>{setIsMenuOpen(!isMenuOpen)}}/></div>
-            <Categories/>
+            <Categories setIsMenuOpen={setIsMenuOpen}/>
         </div>
     </Modal>
   )
