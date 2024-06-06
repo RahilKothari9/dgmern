@@ -8,6 +8,7 @@ import {db} from './firebase.js'
 import Menu from './components/Menu.jsx'
 import { useCategory } from './contexts/CategoryContext.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Signup from './components/Signup.jsx'
 function App() {
   const [tasks, setTasks] = useState([])
   const {currCategory} = useCategory();
@@ -54,7 +55,7 @@ function App() {
         </>}/>
         <Route exact path = '/chat' element={<>
           <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} chat={true} setChat={setChat}/>
-          
+          <Signup/>
         </>}/>
 
       </Routes>
