@@ -7,12 +7,14 @@ import { collection, getDocs, where } from "firebase/firestore";
 import {db} from './firebase.js'
 import Menu from './components/Menu.jsx'
 import { useCategory } from './contexts/CategoryContext.jsx'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 function App() {
   const [tasks, setTasks] = useState([])
   const {currCategory} = useCategory();
   const [loading, setLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [taskList, setTaskList] = useState([]);
+  const [chat, setChat] = useState(false);
   useEffect(()=>{
     const fetchTasks = async()=>{
       setLoading(true);
@@ -43,9 +45,21 @@ function App() {
 
   return (
     <>
-      <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>
-      <Content tasks={tasks} setTasks={setTasks} style={{margin: 'auto'}} loading={loading}/>
-      {isMenuOpen && <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>}
+    <Router>
+      <Routes>
+        <Route exact path = '/' element={<>
+          <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} chat={chat} setChat={setChat}/>
+          <Content tasks={tasks} setTasks={setTasks} style={{margin: 'auto'}} loading={loading}/>
+          {isMenuOpen && <Menu setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen}/>}
+        </>}/>
+        <Route exact path = '/chat' element={<>
+          <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} chat={true} setChat={setChat}/>
+          
+        </>}/>
+
+      </Routes>
+    </Router>
+      
     </>
   )
 }

@@ -1,6 +1,7 @@
 .modal {
     position: absolute;
     width: 100vw;
+    max-width: 500px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,7 +10,8 @@
 .top {
     display: flex;
     justify-content: right;
-    margin: 5%;
+    margin-top: 4vh;
     color: white;
-    width: 90%;
+    width: 90vw;
+    max-width: 450px;
 }
