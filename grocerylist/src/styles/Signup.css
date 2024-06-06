@@ -30,6 +30,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 5vh;
+    box-shadow: 8px 8px;
+}
+.signup-button:hover {
+    background-color: #2f2d36;
 }
 .signup-text {
     margin-left: 1em;
