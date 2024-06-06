@@ -4,11 +4,14 @@ import Header from './components/Header'
 import Content from './components/Content'
 import axios from 'axios'
 import { collection, getDocs, where } from "firebase/firestore"; 
-import {db} from './firebase.js'
+import {db,auth} from './firebase.js'
 import Menu from './components/Menu.jsx'
 import { useCategory } from './contexts/CategoryContext.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Signup from './components/Signup.jsx'
+import { useAuthState } from "react-firebase-hooks/auth";
+
+
 function App() {
   const [tasks, setTasks] = useState([])
   const {currCategory} = useCategory();
@@ -16,6 +19,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [taskList, setTaskList] = useState([]);
   const [chat, setChat] = useState(false);
+  const [user] = useAuthState(auth)
   useEffect(()=>{
     const fetchTasks = async()=>{
       setLoading(true);
@@ -55,7 +59,8 @@ function App() {
         </>}/>
         <Route exact path = '/chat' element={<>
           <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} chat={true} setChat={setChat}/>
-          <Signup/>
+          {(user)?<Content tasks={tasks} setTasks={setTasks} style={{margin: 'auto'}} loading={loading}/>:
+           <Signup/>}
         </>}/>
 
       </Routes>
