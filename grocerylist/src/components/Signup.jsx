@@ -7,7 +7,7 @@ const Signup = () => {
     
     <div className='signup'>
       <div className='image-container'>
-        <img src={"./public/static/chat-backdrop.svg"} className='image'></img>
+        <img src={"/static/chat-backdrop.svg"} className='image'></img>
         </div>
         <div className='signup-button'>
             <p className='signup-text'>Signup with Google</p>
