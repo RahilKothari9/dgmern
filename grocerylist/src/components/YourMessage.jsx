@@ -5,6 +5,7 @@ const YourMessage = ({message, isFirst}) => {
   return (
     <>
     {isFirst && <div className='padder'/>}
+    <div className='right-aligner'>
     <div className='right-message'>
        
         <div className='left-section'>
@@ -21,6 +22,7 @@ const YourMessage = ({message, isFirst}) => {
         <div className='profile-pic'>
             {isFirst &&<img src='./static/chat-backdrop.svg'></img>}
         </div>
+    </div>
     </div>
     </>
   )

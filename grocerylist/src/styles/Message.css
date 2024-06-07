@@ -9,7 +9,10 @@
 .right-message {
     display: flex;
     margin-top: 0.4em;
-    align-self: end;
+}
+.right-aligner {
+    display:flex;
+    justify-content: end;
 }
 .padder{
     min-height: 1em;
@@ -32,11 +35,13 @@
     padding-left: 0.5em;
     font-weight: 250;
     margin-top: 0.2em;
+    margin-right: 0.2em;
 }
 
 .sender-name {
     margin: 0.5em;
     margin-top: 0.2em;
+    margin-bottom: 0.2em;
 }
 
 .timestamp {
