@@ -22,6 +22,7 @@
     font-size: 1.4em;
     font-weight: 600;
     width: 70vw;
+    max-width: 300px;
     border-radius: 2em;
     padding-left: 5%;
     padding-right: 5%;

@@ -1,0 +1,45 @@
+.profile-pic{
+    min-width: 35px;
+}
+
+.message {
+    display: flex;
+    margin-top: 0.4em;
+}
+.right-message {
+    display: flex;
+    margin-top: 0.4em;
+    align-self: end;
+}
+.padder{
+    min-height: 1em;
+}
+.right-section {
+    background-color: #2f2d36;
+    margin-left: 0.5em;
+    border-radius: 0 1em 1em 1em;
+    padding: 0.4em;
+}
+
+.left-section {
+    background-color: #060964;
+    margin-right: 0.5em;
+    border-radius: 1em 0em 1em 1em;
+    padding: 0.4em;
+}
+.message-content {
+    font-size: 1.2em;
+    padding-left: 0.5em;
+    font-weight: 250;
+    margin-top: 0.2em;
+}
+
+.sender-name {
+    margin: 0.5em;
+    margin-top: 0.2em;
+}
+
+.timestamp {
+    text-align: end;
+    font-size: 0.75em;
+}

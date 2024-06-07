@@ -10,6 +10,7 @@ import { useCategory } from './contexts/CategoryContext.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Signup from './components/Signup.jsx'
 import { useAuthState } from "react-firebase-hooks/auth";
+import Chat from './components/Chat.jsx'
 
 
 function App() {
@@ -24,9 +25,6 @@ function App() {
     const fetchTasks = async()=>{
       setLoading(true);
       try {
-        // const response = await axios.get('http://localhost:3000/tasks')
-        // setTasks(response.data);
-        console.log(currCategory.id)
         const querySnapshot = await getDocs(collection(db, "tasks"));
         const arr = [];
         querySnapshot.forEach((doc) => {
@@ -59,7 +57,7 @@ function App() {
         </>}/>
         <Route exact path = '/chat' element={<>
           <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} chat={true} setChat={setChat}/>
-          {(user)?<Content tasks={tasks} setTasks={setTasks} style={{margin: 'auto'}} loading={loading}/>:
+          {(user)?<Chat/>:
            <Signup/>}
         </>}/>
 
