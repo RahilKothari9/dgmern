@@ -8,13 +8,15 @@ import { Timestamp, addDoc, collection } from 'firebase/firestore';
 const SendMessage = ({messages, setMessages}) => {
   const [newMessage, setNewMessage] = useState('')
   const [user] = useAuthState(auth)
+  const [pause, setPause] = useState(false)
   const addMessage = async ()=>{
     if(newMessage === '')return;
-    console.log(user)
+    setPause(true)
     const newObj = {content:newMessage, time: Timestamp.now(), userId:user.uid, name:user.displayName, photo:user.photoURL}
+    setNewMessage('')
     const updArr = [...messages, newObj]
     setMessages(updArr);
-    setNewMessage('')
+    
     try {
         const docRef = await(addDoc(collection(db, 'messages'), newObj));
         updArr[updArr.length-1].id = docRef.id;
@@ -23,6 +25,9 @@ const SendMessage = ({messages, setMessages}) => {
     catch(err)
     {
       console.log(err)
+    }
+    finally {
+      setPause(false);
     }
   }
 
@@ -34,7 +39,7 @@ const SendMessage = ({messages, setMessages}) => {
             onChange={(e)=>{setNewMessage(e.target.value)}}
             className='input'
         ></input>
-        <button className='button' onClick={()=>{addMessage()}}><SendIcon onClick={()=>{addMessage()}}/></button>
+        <button className='button' onClick={()=>{addMessage()}}><SendIcon/></button>
     </form>
   )
 }
