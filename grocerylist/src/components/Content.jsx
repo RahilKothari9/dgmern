@@ -44,7 +44,7 @@ const Content = ({tasks, setTasks, loading}) => {
         {
             (loading)? "Tasks are loading...":
             tasks.map((task)=>{
-                if(currCategory.id === 0 || currCategory.id === task.categoryId)return (<Task task={task} key={task.id} handleCheck={handleCheck} handleDelete={handleDelete}/>)
+                if(currCategory.id === 0 || currCategory.id === task.categoryId)return (<Task task={task} key={task.firebaseId} handleCheck={handleCheck} handleDelete={handleDelete}/>)
             })
         }
         </div>

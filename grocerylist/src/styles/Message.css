@@ -2,6 +2,11 @@
     min-width: 35px;
 }
 
+.profile-pic img {
+    max-width: 35px;
+    border-radius: 50%;
+}
+
 .message {
     display: flex;
     margin-top: 0.4em;
@@ -34,17 +39,17 @@
     font-size: 1.2em;
     padding-left: 0.5em;
     font-weight: 250;
-    margin-top: 0.2em;
+    margin-bottom: 0.2em;
     margin-right: 0.2em;
 }
 
 .sender-name {
     margin: 0.5em;
     margin-top: 0.2em;
-    margin-bottom: 0.2em;
+    margin-bottom: 0em;
 }
 
 .timestamp {
     text-align: end;
-    font-size: 0.75em;
+    font-size: 0.7em;
 }
