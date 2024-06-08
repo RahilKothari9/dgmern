@@ -47,7 +47,7 @@ const TaskForm = ({tasks, setTasks}) => {
             onChange={(e)=>{setNewTask(e.target.value)}}
             className='input'
         ></input>
-        <button className='button' onClick={()=>{AddTask()}}><AddTaskIcon onClick={()=>{AddTask}}/></button>
+        <button className='button' onClick={()=>{AddTask()}}><AddTaskIcon/></button>
     </form>
   )
 }

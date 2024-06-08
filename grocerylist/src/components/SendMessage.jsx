@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, } from 'react'
 import SendIcon from '@mui/icons-material/Send';
 import '../styles/SendMessage.css'
 import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Timestamp, addDoc, collection } from 'firebase/firestore';
 
-const SendMessage = ({messages, setMessages}) => {
+const SendMessage = ({messages, setMessages, scroll}) => {
   const [newMessage, setNewMessage] = useState('')
   const [user] = useAuthState(auth)
   const [pause, setPause] = useState(false)
@@ -16,7 +16,7 @@ const SendMessage = ({messages, setMessages}) => {
     setNewMessage('')
     const updArr = [...messages, newObj]
     setMessages(updArr);
-    
+    // setImmediate(() => ref.current.scrollIntoView({ inline: "center", }));
     try {
         const docRef = await(addDoc(collection(db, 'messages'), newObj));
         updArr[updArr.length-1].id = docRef.id;
@@ -27,6 +27,7 @@ const SendMessage = ({messages, setMessages}) => {
       console.log(err)
     }
     finally {
+      
       setPause(false);
     }
   }

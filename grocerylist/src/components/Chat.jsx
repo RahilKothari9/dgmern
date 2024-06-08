@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Message from './Message'
 import '../styles/Chat.css'
 import YourMessage from './YourMessage'
@@ -15,6 +15,7 @@ const Chat = () => {
         if(messages[index-1].userId !== messages[index].userId)return true;
         return false;
     }
+    const scroll = useRef();
     const [messages, setMessages] = useState([])
     useEffect(()=>{
         const q = query(
@@ -35,6 +36,10 @@ const Chat = () => {
           });
           return () => unsubscribe;
     },[])
+    useEffect(() => {
+        // Scroll to the bottom of the messages container
+        scroll.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
   return (
         <div className='chatscreen'>
             <div className='messages'>
@@ -46,9 +51,11 @@ const Chat = () => {
                         else return(<YourMessage key={message.id} message={message} isFirst={checkIsFirst(index)}/>)
                     })
                 }  
+                <span ref={scroll}></span>
             </div>
+            
             <div className='send-message'>
-                <SendMessage messages={messages} setMessages={setMessages}/>
+                <SendMessage messages={messages} setMessages={setMessages} scroll={scroll}/>
             </div>
 
         </div>

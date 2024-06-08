@@ -4,7 +4,8 @@ import '../styles/Message.css'
 const YourMessage = ({message, isFirst}) => {
     const date = message.time.toDate()
     const hoursOnly = date.getHours();
-    const minutes = date.getMinutes();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+
   return (
     <>
     {isFirst && <div className='padder'/>}
