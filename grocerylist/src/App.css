@@ -1,6 +1,6 @@
 #root {
   margin: 0;
-  height: 99vh;
+  height: 100%;
   width: 100vw;
   max-width: 500px;
   background-color: #121215;
@@ -15,7 +15,7 @@ body {
   padding: 0;
   display: flex;
   width:100vw;
-  height: 100vh;
+  height: 100dvh;
   justify-content: center;
   align-items: center;
 }
